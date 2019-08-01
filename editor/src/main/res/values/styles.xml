@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyDialogTheme">
+        <!--buttons color-->
+        <item name="colorAccent">@color/white</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+
+    <style name="editor_button">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:scaleX">0.9</item>
+        <item name="android:scaleY">0.9</item>
+        <item name="android:padding">@dimen/toolbar_item_padding</item>
+        <item name="android:tint">@color/editor_icon_tint</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+    </style>
+</resources>

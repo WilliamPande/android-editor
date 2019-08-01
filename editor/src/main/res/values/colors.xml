@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="editor_icon_tint">#000000</color>
+    <color name="editor_background">#FFFFFF</color>
+
+    <color name="colorPrimary">#449134</color>
+    <color name="colorPrimaryDark">#185E09</color>
+    <color name="colorAccent">#ea3b44</color>
+
+    <color name="white">#FFFFFF</color>
+</resources>

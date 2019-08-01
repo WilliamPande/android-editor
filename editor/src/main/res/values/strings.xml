@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TextEditor</string>
+    <string name="link_text">Insert link text</string>
+    <string name="hint_link_to">Insert link URL</string>
+    <string name="hint_no_of_rows">Enter number of rows</string>
+    <string name="hint_no_of_columns">Enter number of columns</string>
+    <string name="title_insert_link">Insert Link</string>
+    <string name="insert">Insert</string>
+    <string name="title_insert_table">Insert Table</string>
+    <string name="dialog_title_text_color">Select text color</string>
+    <string name="dialog_title_text_back_color">Select background color</string>
+</resources>

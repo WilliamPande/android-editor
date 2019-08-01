@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/text_to_display"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:gravity="center_vertical"
+        android:hint="@string/link_text"
+        android:inputType="textCapWords"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/link_to"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_link_to"
+        android:inputType="textCapWords"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+</LinearLayout>
