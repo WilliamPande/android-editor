@@ -39,12 +39,12 @@ class InsertLinkDialogFragment : AppCompatDialogFragment() {
         val textToDisplayEditText = view.findViewById<AppCompatEditText>(R.id.text_to_display)
         val linkToEditText = view.findViewById<AppCompatEditText>(R.id.link_to)
 
-        val dialog = AlertDialog.Builder(Objects.requireNonNull(this.activity))
+        val dialog = AlertDialog.Builder(this.activity!!)
         dialog.setTitle(R.string.title_insert_link)
         dialog.setView(view)
         dialog.setPositiveButton(R.string.insert) { _, _ ->
-            val title = Objects.requireNonNull(textToDisplayEditText.text).toString().trim { it <= ' ' }
-            val url = Objects.requireNonNull(linkToEditText.text).toString().trim { it <= ' ' }
+            val title = textToDisplayEditText.text.toString().trim { it <= ' ' }
+            val url = linkToEditText.text.toString().trim { it <= ' ' }
 
             if (this.listener != null) {
                 this.listener!!.onInsertClick(title, url)

@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editor = MyEditor()
+        val editor = MyEditor(
+            this,
+            arrayOf(getString(R.string.des_list))
+        )
     }
 }

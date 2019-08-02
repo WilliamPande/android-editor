@@ -1,212 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jkcarino.rtexteditorview.RTextEditorToolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editor_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/editor_background"
     android:gravity="center">
 
     <com.google.android.flexbox.FlexboxLayout
-        android:id="@+id/editor_toolbar"
+        android:id="@+id/editor_flex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tag="main"
         app:flexWrap="wrap">
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/undo_button"
             style="@style/editor_button"
-            app:srcCompat="@drawable/ic_format_bold"
-            app:toolType="bold" />
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_undo" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/redo_button"
             style="@style/editor_button"
-            android:tag="main"
-            app:srcCompat="@drawable/ic_format_italic"
-            app:toolType="italic" />
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_redo" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/bold_button"
             style="@style/editor_button"
-            android:tag="main"
-            app:srcCompat="@drawable/ic_format_underlined"
-            app:toolType="underline" />
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_format_bold" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/italic_button"
             style="@style/editor_button"
-            android:tag="main"
-            app:srcCompat="@drawable/ic_format_strike_through"
-            app:toolType="strikethrough" />
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_format_italic" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/underline_button"
             style="@style/editor_button"
-            android:tag="main"
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_format_underlined" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/strike_through_button"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_format_strike_through" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_remove_format"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_main"
             app:srcCompat="@drawable/ic_format_clear"
             app:toolType="removeFormat" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/clear_button"
             style="@style/editor_button"
-            android:tag="main"
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@drawable/ic_clear" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_main"
             app:srcCompat="@drawable/ic_format_normal"
             app:toolType="normal" />
 
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/heading_spinner"
+            android:layout_width="100dp"
+            android:layout_height="27dp"
+            android:background="@drawable/spinner_editor_background"
+            android:contentDescription="@string/desc_heading" />
+
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_superscript"
             style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h1"
-            app:toolType="h1" />
+            android:contentDescription="@string/desc_sub"
+            app:srcCompat="@drawable/ic_format_superscript" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_subscript"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_sub"
+            app:srcCompat="@drawable/ic_format_subscript" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_text_color"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_color"
+            app:srcCompat="@drawable/ic_format_color_text" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_fill_color"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_color"
+            app:srcCompat="@drawable/ic_format_color_fill" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_unordered"
+            style="@style/editor_button"
+            android:contentDescription="@string/des_list"
+            app:srcCompat="@drawable/ic_format_list_bullet_list" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_ordered"
+            style="@style/editor_button"
+            android:contentDescription="@string/des_list"
+            app:srcCompat="@drawable/ic_format_list_numbered" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_align_left"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_align"
+            app:srcCompat="@drawable/ic_format_align_left" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_align_center"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_align"
+            app:srcCompat="@drawable/ic_format_align_center" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_align_right"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_align"
+            app:srcCompat="@drawable/ic_format_align_right" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_align_justify"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_align"
+            app:srcCompat="@drawable/ic_format_align_justify" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_indent"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_indent"
+            app:srcCompat="@drawable/ic_format_indent_increase" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_out_dent"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_indent"
+            app:srcCompat="@drawable/ic_format_indent_decrease" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_table"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_table"
+            app:srcCompat="@drawable/ic_insert_table" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_link"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_link"
+            app:srcCompat="@drawable/ic_insert_link" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_unlink"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_link"
+            app:srcCompat="@drawable/ic_insert_link_off" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
             style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h2"
-            app:toolType="h2" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h3"
-            app:toolType="h3" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h4"
-            app:toolType="h4" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h5"
-            app:toolType="h5" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="heading"
-            app:srcCompat="@drawable/ic_format_h6"
-            app:toolType="h6" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="sub"
-            app:srcCompat="@drawable/ic_format_superscript"
-            app:toolType="superscript" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="sub"
-            app:srcCompat="@drawable/ic_format_subscript"
-            app:toolType="subscript" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            android:id="@+id/text_fore_color"
-            style="@style/editor_button"
-            android:tag="color"
-            app:srcCompat="@drawable/ic_format_color_text"
-            app:toolType="textForeColor" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            android:id="@+id/text_back_color"
-            style="@style/editor_button"
-            android:tag="color"
-            app:srcCompat="@drawable/ic_format_color_fill"
-            app:toolType="textBackColor" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="list"
-            app:srcCompat="@drawable/ic_format_list_bulleted"
-            app:toolType="unordered" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="list"
-            app:srcCompat="@drawable/ic_format_list_numbered"
-            app:toolType="ordered" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
+            android:contentDescription="@string/desc_view_code"
             android:visibility="gone"
-            app:srcCompat="@drawable/ic_format_quote"
-            app:toolType="blockQuote" />
+            app:srcCompat="@drawable/ic_view_code"
+            app:toolType="editHtml" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_horizontal_rule"
             style="@style/editor_button"
-            android:visibility="gone"
-            app:srcCompat="@drawable/ic_format_code"
-            app:toolType="blockCode" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="align"
-            app:srcCompat="@drawable/ic_format_align_left"
-            app:toolType="alignLeft" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="align"
-            app:srcCompat="@drawable/ic_format_align_center"
-            app:toolType="alignCenter" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            android:id="@+id/format_align_right"
-            style="@style/editor_button"
-            android:tag="align"
-            app:srcCompat="@drawable/ic_format_align_right"
-            app:toolType="alignRight" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="align"
-            app:srcCompat="@drawable/ic_format_align_justify"
-            app:toolType="alignJustify" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:visibility="gone"
+            android:contentDescription="@string/desc_horizontal_rule"
             app:srcCompat="@drawable/ic_insert_line"
             app:toolType="horizontalRule" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_block_quote"
             style="@style/editor_button"
-            android:tag="indent"
-            app:srcCompat="@drawable/ic_format_indent_increase"
-            app:toolType="indent" />
+            android:contentDescription="@string/desc_block_quote"
+            app:srcCompat="@drawable/ic_format_quote"
+            app:toolType="blockQuote" />
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/button_format_code"
             style="@style/editor_button"
-            android:tag="align"
-            app:srcCompat="@drawable/ic_format_indent_decrease"
-            app:toolType="outdent" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            android:id="@+id/insert_table"
-            style="@style/editor_button"
-            android:tag="table"
-            app:srcCompat="@drawable/ic_insert_table"
-            app:toolType="table" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            android:id="@+id/insert_link"
-            style="@style/editor_button"
-            app:srcCompat="@drawable/ic_insert_link"
-            android:tag="link"
-            app:toolType="link" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            app:srcCompat="@drawable/ic_insert_link_off"
-            android:tag="link"
-            app:toolType="unlink" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="clear"
-            app:srcCompat="@drawable/ic_clear"
-            app:toolType="clear" />
-
-        <com.jkcarino.rtexteditorview.RTextEditorButton
-            style="@style/editor_button"
-            android:tag="view_code"
-            app:srcCompat="@drawable/ic_view_code"
-            app:toolType="editHtml" />
+            android:contentDescription="@string/desc_format_code"
+            app:srcCompat="@drawable/ic_format_code" />
     </com.google.android.flexbox.FlexboxLayout>
-</LinearLayout>
+</com.jkcarino.rtexteditorview.RTextEditorToolbar>

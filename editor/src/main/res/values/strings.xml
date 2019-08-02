@@ -9,4 +9,17 @@
     <string name="title_insert_table">Insert Table</string>
     <string name="dialog_title_text_color">Select text color</string>
     <string name="dialog_title_text_back_color">Select background color</string>
+    <string name="desc_main">main</string>
+    <string name="desc_heading">heading</string>
+    <string name="desc_sub">sub</string>
+    <string name="desc_color">color</string>
+    <string name="des_list">list</string>
+    <string name="desc_align">align</string>
+    <string name="desc_indent">indent</string>
+    <string name="desc_table">table</string>
+    <string name="desc_link">link</string>
+    <string name="desc_view_code">view_code</string>
+    <string name="desc_format_code">desc_format_code</string>
+    <string name="desc_block_quote">desc_block_quote</string>
+    <string name="desc_horizontal_rule">desc_horizontal_rule</string>
 </resources>

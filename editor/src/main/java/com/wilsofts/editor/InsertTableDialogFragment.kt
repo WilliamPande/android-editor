@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.FragmentManager
-import java.util.*
 
 class InsertTableDialogFragment : AppCompatDialogFragment() {
     private var listener: OnInsertClickListener? = null
@@ -34,18 +33,20 @@ class InsertTableDialogFragment : AppCompatDialogFragment() {
         val columnCountEditText = view.findViewById<AppCompatEditText>(R.id.column_count)
         val rowCountEditText = view.findViewById<AppCompatEditText>(R.id.row_count)
 
-        val dialog = AlertDialog.Builder(Objects.requireNonNull(this.activity))
+        val dialog = AlertDialog.Builder(this.activity!!)
         dialog.setTitle(R.string.title_insert_table)
         dialog.setView(view)
         dialog.setPositiveButton(R.string.insert) { _, _ ->
-            val colCount = Objects.requireNonNull(columnCountEditText.text).toString().trim { it <= ' ' }
-            val rowCount = Objects.requireNonNull(rowCountEditText.text).toString().trim { it <= ' ' }
+            val colCount = columnCountEditText.text.toString().trim { it <= ' ' }
+            val rowCount = rowCountEditText.text.toString().trim { it <= ' ' }
 
             if (this.listener != null) {
                 this.listener!!.onInsertClick(Integer.valueOf(colCount), Integer.valueOf(rowCount))
             }
         }
-        dialog.setNegativeButton(android.R.string.cancel) { dialog1, which -> dialog1.cancel() }
+        dialog.setNegativeButton(android.R.string.cancel) { dialog1, _ ->
+            dialog1.cancel()
+        }
 
         return dialog.create()
     }
