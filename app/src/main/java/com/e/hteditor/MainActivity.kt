@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editor = MyEditor(
-            this,
-            arrayOf(getString(R.string.des_list))
-        )
+        editor = MyEditor(this, arrayOf(getString(R.string.des_list)))
     }
 }
