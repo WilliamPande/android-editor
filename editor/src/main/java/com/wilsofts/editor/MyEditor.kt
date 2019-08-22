@@ -1,20 +1,21 @@
 package com.wilsofts.editor
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.fragment.app.FragmentActivity
 import com.google.android.flexbox.FlexboxLayout
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
-import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
+import com.jaredrummler.android.colorpicker.ColorShape
 import com.jkcarino.rtexteditorview.RTextEditorButton
 import com.jkcarino.rtexteditorview.RTextEditorToolbar
 import com.jkcarino.rtexteditorview.RTextEditorView
 
-class MyEditor(private val activity: FragmentActivity, descriptions: Array<String>) :
-    ColorPickerDialogListener {
+
+class MyEditor(private val activity: FragmentActivity, descriptions: Array<String>) {
     private val DIALOG_TEXT_FORE_COLOR_ID = 0
     private val DIALOG_TEXT_BACK_COLOR_ID = 1
     private var editor_view: RTextEditorView
@@ -28,13 +29,16 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
         for (description in descriptions) {
             val list = arrayListOf<View>()
             editor_flex.findViewsWithText(list, description, View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION)
-            Toast.makeText(activity, list.size.toString(), Toast.LENGTH_LONG).show()
             list.forEach { button ->
                 button.setOnClickListener { v: View ->
                     v.visibility = View.VISIBLE
                 }
             }
         }
+
+
+        this.editor_view.setOnTouchListener { _, _ -> true }
+
 
         activity.findViewById<RTextEditorButton>(R.id.undo_button).setOnClickListener {
             editor_view.undo()
@@ -69,18 +73,31 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
 
         val heading_spinner: AppCompatSpinner = activity.findViewById(R.id.heading_spinner)
         val payment_adapter = ArrayAdapter(
-            this.activity.applicationContext, R.layout.editor_spinner_layout,
-            arrayOf("Select heading", "Heading 1", "Heading 2", "Heading 3", "Heading 4", "Heading 5", "Heading 6")
+                this.activity.applicationContext, R.layout.editor_spinner_layout,
+                arrayOf(
+                        "Select heading",
+                        "Heading 1",
+                        "Heading 2",
+                        "Heading 3",
+                        "Heading 4",
+                        "Heading 5",
+                        "Heading 6"
+                )
         )
         payment_adapter.setDropDownViewResource(R.layout.editor_spinner_dropdown)
         heading_spinner.adapter = payment_adapter
-        heading_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        heading_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if(position > 0){
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+                if (position > 0) {
                     editor_view.setHeading(position)
                 }
             }
@@ -96,21 +113,11 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
         }
 
         activity.findViewById<RTextEditorButton>(R.id.button_text_color).setOnClickListener {
-            ColorPickerDialog.newBuilder()
-                .setDialogId(DIALOG_TEXT_FORE_COLOR_ID)
-                .setDialogTitle(R.string.dialog_title_text_color)
-                .setShowAlphaSlider(false)
-                .setAllowCustom(true)
-                .show(this.activity)
+            colorPicker(DIALOG_TEXT_FORE_COLOR_ID, R.string.dialog_title_text_color)
         }
 
         activity.findViewById<RTextEditorButton>(R.id.button_fill_color).setOnClickListener {
-            ColorPickerDialog.newBuilder()
-                .setDialogId(DIALOG_TEXT_BACK_COLOR_ID)
-                .setDialogTitle(R.string.dialog_title_text_back_color)
-                .setShowAlphaSlider(false)
-                .setAllowCustom(true)
-                .show(this.activity)
+            colorPicker(DIALOG_TEXT_BACK_COLOR_ID, R.string.dialog_title_text_back_color)
         }
 
         activity.findViewById<RTextEditorButton>(R.id.button_block_quote).setOnClickListener {
@@ -152,7 +159,8 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
 
         activity.findViewById<RTextEditorButton>(R.id.button_link).setOnClickListener {
             val dialog = InsertLinkDialogFragment.newInstance()
-            dialog.setOnInsertClickListener(object : InsertLinkDialogFragment.OnInsertClickListener {
+            dialog.setOnInsertClickListener(object :
+                    InsertLinkDialogFragment.OnInsertClickListener {
                 override fun onInsertClick(title: String, url: String) {
                     editor_view.insertLink(title, url)
                 }
@@ -162,7 +170,8 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
 
         activity.findViewById<RTextEditorButton>(R.id.button_table).setOnClickListener {
             val dialog = InsertTableDialogFragment.newInstance()
-            dialog.setOnInsertClickListener(object : InsertTableDialogFragment.OnInsertClickListener {
+            dialog.setOnInsertClickListener(object :
+                    InsertTableDialogFragment.OnInsertClickListener {
                 override fun onInsertClick(colCount: Int, rowCount: Int) {
                     editor_view.insertTable(colCount, rowCount)
                 }
@@ -170,23 +179,45 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
             dialog.show(this.activity.supportFragmentManager, "insert-table-dialog")
         }
 
-
         /*unused*/
-        activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
-           // editor_view.focus()
-        }
+        /* activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
+            editor_view.focus()
+         }
 
-        activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
-           // editor_view.setNormal()
-        }
+         activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
+            editor_view.setNormal()
+         }
 
-        activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
-           // editor_view.enable()
-        }
+         activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
+            editor_view.enable()
+         }
 
-        activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
-            //editor_view.disable()
+         activity.findViewById<RTextEditorButton>(R.id.bold_button).setOnClickListener {
+             editor_view.disable()
+         }*/
+    }
+
+    fun showHideKeyboard(show: Boolean) {
+        if (show) {
+            (activity.applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                    .showSoftInput(editor_view, InputMethodManager.SHOW_FORCED)
+        } else {
+            (activity.applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                    .hideSoftInputFromWindow(editor_view.windowToken, 0)
         }
+    }
+
+    private fun colorPicker(dialog_id: Int, title: Int) {
+        ColorPickerDialog.newBuilder()
+                .setDialogId(dialog_id)
+                .setDialogTitle(title)
+                .setDialogType(ColorPickerDialog.TYPE_CUSTOM)
+                .setShowAlphaSlider(true)
+                .setAllowCustom(true)
+                .setShowColorShades(true)
+                .setAllowPresets(true)
+                .setColorShape(ColorShape.SQUARE)
+                .show(this.activity)
     }
 
     public fun insertText(text: String) {
@@ -209,15 +240,11 @@ class MyEditor(private val activity: FragmentActivity, descriptions: Array<Strin
         editor_view.setLineHeight(14)
     }
 
-    override fun onColorSelected(dialogId: Int, color: Int) {
+    public fun onColorSelected(dialogId: Int, color: Int) {
         if (dialogId == DIALOG_TEXT_FORE_COLOR_ID) {
             this.editor_view.setTextColor(color)
         } else if (dialogId == DIALOG_TEXT_BACK_COLOR_ID) {
             this.editor_view.setTextBackgroundColor(color)
         }
-    }
-
-    override fun onDialogDismissed(dialogId: Int) {
-
     }
 }

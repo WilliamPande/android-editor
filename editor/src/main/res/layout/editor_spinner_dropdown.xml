@@ -6,7 +6,6 @@
     android:layout_height="35dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:background="@drawable/spinner_editor_background"
     android:ellipsize="marquee"
     android:paddingLeft="10dp"
     android:gravity="center_vertical"

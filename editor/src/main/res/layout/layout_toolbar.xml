@@ -14,6 +14,18 @@
         app:flexWrap="wrap">
 
         <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/show_spinner"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@mipmap/ic_spinner_up" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
+            android:id="@+id/hide_spinner"
+            style="@style/editor_button"
+            android:contentDescription="@string/desc_main"
+            app:srcCompat="@mipmap/ic_spinner_down" />
+
+        <com.jkcarino.rtexteditorview.RTextEditorButton
             android:id="@+id/undo_button"
             style="@style/editor_button"
             android:contentDescription="@string/desc_main"
@@ -71,7 +83,7 @@
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/heading_spinner"
             android:layout_width="100dp"
-            android:layout_height="27dp"
+            android:layout_height="20dp"
             android:background="@drawable/spinner_editor_background"
             android:contentDescription="@string/desc_heading" />
 
